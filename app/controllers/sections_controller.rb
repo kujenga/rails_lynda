@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
 
-  layout false
+  layout "admin"
 
   def index
     @sections = Section.sorted
@@ -52,7 +52,7 @@ class SectionsController < ApplicationController
 
   private
   def section_params
-    params.require(:section).permit(:name,:position,:visible,:content,:content_type)
+    params.require(:section).permit(:name,:position,:visible,:content,:content_type,:page_id)
   end
 
 end
