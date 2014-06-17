@@ -1,13 +1,18 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+  respond_to :html,:json,:xml
+
   # GET /events
   def index
     @events = Event.all
+    respond_with @events
   end
 
   # GET /events/1
   def show
+    @event = Event.find(params[:id])
+    respond_with @event
   end
 
   # GET /events/new
@@ -17,6 +22,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @event = Event.find(params[:id])
   end
 
   # POST /events
@@ -24,6 +30,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
+      respond_with @event
       redirect_to @event, notice: 'Event was successfully created.'
     else
       render :new
@@ -33,6 +40,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   def update
     if @event.update(event_params)
+      respond_with @event
       redirect_to @event, notice: 'Event was successfully updated.'
     else
       render :edit
