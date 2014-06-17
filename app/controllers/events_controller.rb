@@ -30,7 +30,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      respond_with @event
+      # respond_with @event
       redirect_to @event, notice: 'Event was successfully created.'
     else
       render :new
@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   def update
     if @event.update(event_params)
-      respond_with @event
+      # respond_with @event
       redirect_to @event, notice: 'Event was successfully updated.'
     else
       render :edit
