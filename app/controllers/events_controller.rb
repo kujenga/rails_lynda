@@ -30,7 +30,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      respond_with @event
+      #respond_with @event
       redirect_to @event, notice: 'Event was successfully created.'
     else
       render :new
@@ -61,6 +61,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:name, :location, :time)
+      params.require(:event).permit(:title, :description, :institution, :public, :start_date, :end_date)
     end
 end
