@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :events
+
   root "demo#index"
   #get 'demo/index'
   match ':controller(/:action(/:id))', :via => [:get,:post]
