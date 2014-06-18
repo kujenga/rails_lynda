@@ -1,6 +1,13 @@
 module Api
   module V1
-    class EventsController < ApplicationController # Api::BaseCOntroller
+    class EventsController < ApplicationController # Api::BaseController
+
+      class Event < ::Event
+        def as_json(options = {})
+          super.merge(name: title.to_s)
+        end
+      end
+
       respond_to :json
 
       def index
