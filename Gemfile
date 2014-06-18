@@ -40,3 +40,5 @@ gem 'spring',        group: :development
 
 # deployment
 gem 'capistrano', '~> 3.2.0'
+# rails api builder
+gem 'rabl'
