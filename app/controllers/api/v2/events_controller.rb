@@ -1,5 +1,5 @@
 module Api
-  module V1
+  module V2
     class EventsController < ApplicationController # Api::BaseController
       respond_to :json
 
