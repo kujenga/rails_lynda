@@ -5,8 +5,6 @@ class ApiConstraints
   end
 
   def matches?(req)
-    puts 'testing matches'
-    puts @version
     @default || req.headers['Accept'].include?("application/simple_cms.v#{@version}")
   end
 end
