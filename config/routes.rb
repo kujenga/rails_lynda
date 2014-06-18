@@ -1,4 +1,16 @@
+require 'api_constraints'
+
 Rails.application.routes.draw do
+
+  namespace :api, defaults: {format: 'json'}  do
+    # /api/... Api::
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :events
+    end
+    scope module: :v2, constraints: ApiConstraints.new(version: 2) do
+      resources :events
+    end
+  end
 
   resources :events
 
