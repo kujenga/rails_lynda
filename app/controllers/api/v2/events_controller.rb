@@ -1,5 +1,5 @@
 module Api
-  module V1
+  module V2
     class EventsController < ApplicationController # Api::BaseController
       respond_to :json
 
@@ -11,8 +11,16 @@ module Api
         respond_with Event.find(params[:id])
       end
 
+      def new
+        respond_with Event.new
+      end
+
       def create
         respond_with Event.create(params[:event])
+      end
+
+      def edit
+        respond_with Event.find(params[:id])
       end
 
       def update
