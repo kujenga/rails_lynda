@@ -18,11 +18,13 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    respond_with @event
   end
 
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    respond_with @event
   end
 
   # POST /events
