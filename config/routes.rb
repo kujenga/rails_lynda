@@ -2,8 +2,11 @@ require 'api_constraints'
 
 Rails.application.routes.draw do
 
+  root "demo#index"
+
   namespace :api, defaults: {format: 'json'}  do
     # /api/... Api::
+    # adds versioning capabilities to the API using separate modules
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :events
     end
@@ -12,11 +15,17 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :events
+  # standard routes for the sedtions and pages
+  resources :sections, :pages
 
-  root "demo#index"
+  # nested route showing the pages for each subject
+  resources :subjects do
+    resources :pages
+  end
+
   #get 'demo/index'
   match ':controller(/:action(/:id))', :via => [:get,:post]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
